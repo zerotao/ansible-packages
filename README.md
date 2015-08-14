@@ -1,7 +1,7 @@
-zerotao.packages
-================
+packages
+=========
 
-Role to install packages
+Ansible Role to install packages
 
 Example Playbook
 ----------------
