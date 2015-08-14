@@ -11,12 +11,12 @@ Including an example of how to use your role (for instance, with variables passe
     - hosts: servers
       roles:
          - role: zerotao.packages
-           packages: # list of packages to install
+           packages_add: # list of packages to install
              - tmux
              - vim
-           remove_package: # list of packages to remove
+           packages_remove: # list of packages to remove
              - build-essential
-           repos:  # list of repositories to add for the packages
+           packages_repos:  # list of repositories to add for the packages
              - name: erlang
                repo: "deb http://packages.erlang-solutions.com/ubuntu trusty contrib"
                key: "http://packages.erlang-solutions.com/ubuntu/erlang_solutions.asc"
