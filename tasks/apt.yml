@@ -1,0 +1,29 @@
+- name: apt | add/remove package signing keys
+  apt_key:
+    url: "{{ item.key }}"
+    state: "{{ item.state | default('present') }}"
+  when: item.key is defined
+  with_items: repos
+
+- name: apt | add/remove package repos
+  apt_repository:
+    repo: "{{ item.repo }}"
+    state: "{{ item.state | default('present') }}"
+    update_cache: yes
+  with_items: repos
+
+- name: apt | update cache
+  apt:
+    update_cache: yes
+
+- name: apt | remove packages
+  apt:
+    name: "{{ item }}"
+    state: absent
+  with_items: remove_packages
+
+- name: apt | add packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: packages

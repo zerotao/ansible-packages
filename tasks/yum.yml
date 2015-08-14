@@ -1,0 +1,21 @@
+- name: yum | add/remove package repos
+  template:
+    src: yum_repo.tmpl
+    dest: /etc/yum.repos.d/{{ item.name }}.repo owner=root group=root mode=0644
+  with_items: repos
+
+- name: yum | update cache
+  yum:
+    update_cache: yes
+
+- name: yum | remove packages
+  yum:
+    name: "{{ itme }}"
+    state: absent
+  with_items: packages
+
+- name: yum | add packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items: packages

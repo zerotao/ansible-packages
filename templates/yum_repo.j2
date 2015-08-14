@@ -1,0 +1,6 @@
+[{{ item.name }}]
+name={{ item.comment | default("{{ item.name }} added by ansible packages") }}
+baseurl={{ item.repo }}
+enabled=1
+gpgcheck={{ 1 if item.key else 0 }}
+{{ "gpgkey={{ item.key }}" if item.key }}

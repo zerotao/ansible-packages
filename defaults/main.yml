@@ -1,0 +1,6 @@
+---
+# defaults file for packages
+packages: []
+remove_package: []
+repos: []
+
