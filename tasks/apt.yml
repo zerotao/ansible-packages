@@ -1,3 +1,11 @@
+- name: apt | config debconf-set-selections
+  template:
+    src: debconf-set-selections.j2
+    dest: /tmp/debconf-set-selections.conf
+
+- name: apt | run debconf-set-selections
+  command: /usr/bin/debconf-set-selections /tmp/debconf-set-selections.conf
+
 - name: apt | add/remove package signing keys
   apt_key:
     url: "{{ item.key }}"

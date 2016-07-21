@@ -1,5 +1,6 @@
 ---
 # defaults file for packages
+packages_accept: []
 packages_add: []
 packages_remove: []
 packages_repos: []
