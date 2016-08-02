@@ -11,14 +11,14 @@
     url: "{{ item.key }}"
     state: "{{ item.state | default('present') }}"
   when: item.key is defined
-  with_items: packages_repos
+  with_items: '{{ packages_repos }}'
 
 - name: apt | add/remove package repos
   apt_repository:
     repo: "{{ item.repo }}"
     state: "{{ item.state | default('present') }}"
     update_cache: yes
-  with_items: packages_repos
+  with_items: '{{ packages_repos }}'
 
 - name: apt | update cache
   apt:
@@ -28,10 +28,10 @@
   apt:
     name: "{{ item }}"
     state: absent
-  with_items: packages_remove
+  with_items: '{{ packages_remove }}'
 
 - name: apt | add packages
   apt:
     name: "{{ item }}"
     state: present
-  with_items: packages_add
+  with_items: '{{ packages_add }}'

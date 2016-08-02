@@ -2,7 +2,7 @@
   template:
     src: yum_repo.tmpl
     dest: /etc/yum.repos.d/{{ item.name }}.repo owner=root group=root mode=0644
-  with_items: packages_repos
+  with_items: '{{ packages_repos }}'
 
 - name: yum | update cache
   yum:
@@ -12,10 +12,10 @@
   yum:
     name: "{{ itme }}"
     state: absent
-  with_items: packages_remove
+  with_items: '{{ packages_remove }}'
 
 - name: yum | add packages
   yum:
     name: "{{ item }}"
     state: present
-  with_items: packages_add
+  with_items: '{{ packages_add }}'
