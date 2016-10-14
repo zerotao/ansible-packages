@@ -3,6 +3,18 @@ packages
 
 Ansible Role to install packages
 
+Role Variables
+--------------
+
+````
+---
+packages_cache_valid_time: omit # uses Ansible default; see `ansible-doc apt`
+packages_accept: []
+packages_add: []
+packages_remove: []
+packages_repos: []
+````
+
 Example Playbook
 ----------------
 
