@@ -2,6 +2,7 @@
   template:
     src: debconf-set-selections.j2
     dest: /tmp/debconf-set-selections.conf
+  when: packages_accept
   register: selections_status
 
 - name: apt | run debconf-set-selections
