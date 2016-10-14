@@ -2,9 +2,11 @@
   template:
     src: debconf-set-selections.j2
     dest: /tmp/debconf-set-selections.conf
+  register: selections_status
 
 - name: apt | run debconf-set-selections
   command: /usr/bin/debconf-set-selections /tmp/debconf-set-selections.conf
+  when: selections_status|changed
 
 - name: apt | add/remove package signing keys
   apt_key:
@@ -23,6 +25,7 @@
 - name: apt | update cache
   apt:
     update_cache: yes
+    cache_valid_time: "{{ packages_cache_valid_time | default(omit) }}"
 
 - name: apt | remove packages
   apt:
