@@ -3,7 +3,7 @@ galaxy_info:
   author: Jason L. Shiffer <jshiffer AT zerotao DOT org>
   description: Ansible Role to install packages
   license: BSD
-  min_ansible_version: 1.2
+  min_ansible_version: 2.4
   platforms:
     - name: Fedora
       versions:
